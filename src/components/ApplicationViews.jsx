@@ -9,14 +9,7 @@ import { Register } from '../pages/Register.jsx'
 
 
 export const ApplicationViews = () => {
-    const [rocksState, setRocksState] = useState([{
-        id: 1,
-        name: "Sample",
-        type: {
-            id: 1,
-            label: "Volcanic"
-        }
-    }])
+    const [rocksState, setRocksState] = useState([])
 
     const fetchRocksFromAPI = async () => {
         const response = await fetch("http://localhost:8000/rocks",
