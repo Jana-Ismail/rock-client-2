@@ -61,10 +61,11 @@ export const RockForm = ({ fetchRocks }) => {
                     </fieldset>
                     <fieldset className="mt-4">
                         <label htmlFor="weight">Weight in kg:</label>
-                        <input id="weight" type="number"
+                        <input id="weight" type="number" step="0.01"
                             onChange={e => {
                                 const copy = { ...rock }
-                                copy.weight = e.target.value
+                                const value = parseFloat(e.target.value)
+                                copy.weight = Math.round( value * 100 ) / 100
                                 updateRockProps(copy)
                             }}
                             value={rock.weight} className="form-control" />
@@ -75,7 +76,7 @@ export const RockForm = ({ fetchRocks }) => {
                         <select id="type" className="form-control"
                             onChange={e => {
                                 const copy = { ...rock }
-                                copy.type_id = parseInt(e.target.value)
+                                copy.typeId = parseInt(e.target.value)
                                 updateRockProps(copy)
                             }}>
                             <option value={0}>- Select a type -</option>
